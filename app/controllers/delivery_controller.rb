@@ -1,9 +1,12 @@
  class DeliveryController < ApplicationController
   def index
+    @matching_deliveries = Delivery.all
     render(:templates => 'delivery/index')
   end
 
   def show
+    delivery_id = params.fetch("id")
+    @deliveries = Delivery.where({:id => delivery_id})
     render(:templates => 'delivery/show')
   end
 

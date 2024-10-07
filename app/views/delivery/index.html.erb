@@ -19,3 +19,16 @@
   <div>
     <button type="submit">Add Package</button>
   </div>
+
+<hr>
+<h2>Waiting on</h2>
+<ul>
+  <% @matching_deliveries.each do |delivery| %>
+    <li>
+      <div><%= delivery.description %></div>
+      <div><%= delivery.supposed_to_arrive_on %></div>
+      <div><%= delivery.details %></div>
+    </li>
+  <% end %>
+  <button type="submit">Mark as revcieved</button>
+</ul>
