@@ -10,7 +10,7 @@
   </div>
   <div>
     <label for="arrival">Arrival Date</label>
-    <input type="date" name="arrival" id="arrival">
+    <input type="date" name="supposed_to_arrive_on" id="arrival">
   </div>
   <div>
   <label for="details">Details</label>
@@ -19,6 +19,7 @@
   <div>
     <button type="submit">Log delivery</button>
   </div>
+</form>
 
 <hr>
 
@@ -30,7 +31,7 @@
       <div><%= delivery.description %></div>
       <div>Supposed to arrive on <%= delivery.supposed_to_arrive_on %></div>
       <div><%= delivery.details %></div>
-      <button type="submit">Mark as revcieved</button>
+      <button type="submit">Mark as received</button>
     </li>
   <% end %>
   </ul>
@@ -46,7 +47,7 @@
         <div><%= done.description %></div>
         <div>Supposed to arrive on <%= done.supposed_to_arrive_on %></div>
         <div><%= done.details %></div>
-        <button type="submit">Mark as revcieved</button>
+        <a href="/delete_delivery/<%= done.id %>">Delete</a>
       </li>
     <% end %>
   </ul>

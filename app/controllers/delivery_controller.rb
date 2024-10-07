@@ -15,12 +15,19 @@
   def new
     delivery = Delivery.new
     delivery.user_id = params.fetch("id")
-    delivery.arrival_date = params.fetch("arrival")
+    delivery.supposed_to_arrive_on = params.fetch("supposed_to_arrive_on")
     delivery.description = params.fetch("description")
     delivery.details = params.fetch("details")
     delivery.created_at = Time.now
     delivery.updated_at = Time.now
     delivery.save
-    redirect_to("/deliveries")
+    redirect_to("/deliveries", { notice: "Delivery created successfully"})
+  end
+
+  def delete
+    delivery_id = params.fetch("id")
+    delivery = Delivery.where(:id => delivery_id).at(0)
+    delivery.destroy
+    redirect_to("/deliveries", { notice: "Delivery deleted successfully"})  
   end
 end
