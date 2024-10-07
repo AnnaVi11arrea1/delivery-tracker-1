@@ -9,4 +9,8 @@
 #  user_id      :integer
 #
 class Delivery < ApplicationRecord
+  def user
+  user_id = self.user_id
+  the_user = Delivery.where(:user_id = user_id)
+  end
 end
