@@ -13,4 +13,5 @@
     delivery.details = params("details")
     delivery.save
     redirect_to delivery_path("/deliveries")
+  end
 end
