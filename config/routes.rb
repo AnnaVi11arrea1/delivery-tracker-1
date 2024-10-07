@@ -8,7 +8,7 @@ get("/users/:id/edit", { :controller => "users", :action => "edit" })
 
 
 get("/deliveries", { :controller => "delivery", :action => "index"})
-post("/add_delivery", { :controller => "delivery", :action => "create"})
+post("/add_delivery", { :controller => "delivery", :action => "new"})
 
 
   # Defines the root path route ("/")

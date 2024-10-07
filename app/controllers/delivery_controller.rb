@@ -7,11 +7,14 @@
     render(:templates => 'delivery/show')
   end
 
-  def create
+  def new
     delivery = Delivery.new
+    delivery.user_id = params.fetch("id")
+    delivery.arrival_date = params.fetch("arrival")
     delivery.description = params.fetch("description")
-    delivery.arrival_date = params.fetch("arrival_date")
     delivery.details = params.fetch("details")
+    delivery.created_at = Time.now
+    delivery.updated_at = Time.now
     delivery.save
     redirect_to("/deliveries")
   end

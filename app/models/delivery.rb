@@ -15,4 +15,9 @@ class Delivery < ApplicationRecord
   user_id = self.user_id
   the_user = Delivery.where(:user_id => user.id)
   end
+
+  def arrival
+    arrival_date = self.arrival_date
+    arrival_date.strftime("%b %e, %Y")
+  end
 end
