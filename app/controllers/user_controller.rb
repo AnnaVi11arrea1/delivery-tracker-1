@@ -5,7 +5,7 @@ class UserController < ApplicationController
 
   def show
     user = params.fetch(:id)
-    @the_user = User.where(user_id: user.id)
+    @the_user = User.where(:user_id => user.id)
     render(:templates => 'user/show')
   end
 

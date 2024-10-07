@@ -8,10 +8,11 @@
   end
 
   def create
-    delivery.description = params("description")
-    delivery.arrival_date = params("arrival_date")
-    delivery.details = params("details")
+    delivery = Delivery.new
+    delivery.description = params.fetch("description")
+    delivery.arrival_date = params.fetch("arrival_date")
+    delivery.details = params.fetch("details")
     delivery.save
-    redirect_to delivery_path("/deliveries")
+    redirect_to("/deliveries")
   end
 end
