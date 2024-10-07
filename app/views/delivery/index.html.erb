@@ -3,8 +3,19 @@
 <hr>
 <h2>Expecting a package?</h2>
 
-<form action="/add_package" method="post">
+<form action="/add_delivery" method="post">
   <div>
     <label for="description">Description</label>
     <input type="text" name="description" id="description">
+  </div>
+  <div>
+    <label for="arrival">Supposed to arrive on</label>
+    <input type="date" name="arrival" id="arrival">
+  </div>
+  <div>
+  <label for="details">Details</label>
+  <textarea name="details" id="details"></textarea>
+  </div>
+  <div>
+    <button type="submit" value="Add Package"></button>
   </div>

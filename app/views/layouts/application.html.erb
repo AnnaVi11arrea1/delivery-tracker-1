@@ -14,8 +14,8 @@
 
     <nav>
       <ul>
-      <li><a href="/">Delivery Tracker</a></li>
       <% if current_user != nil %>
+      <li><a href="/deliveries">Delivery Tracker</a></li>
       <li><a href="/users/sign_out">Sign Out</a></li>
       <li><a href="/users/edit">Edit</a></li>
       <% else %>
@@ -24,7 +24,7 @@
       <% end %>
       </ul>
     </nav>
-    
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
