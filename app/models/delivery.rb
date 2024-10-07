@@ -12,13 +12,15 @@
 #  user_id               :integer
 #
 class Delivery < ApplicationRecord
-  # def user
-  # user_id = self.user_id
-  # the_user = Delivery.where(:user_id => user.id)
-  # end
+  belongs_to :user
+  # validates :arrived, presence: true
+  validates :description, presence: true
+  validates :details, presence: true
+  validates :supposed_to_arrive_on, presence: true
 
-  # def arrival
-  #   arrival_date = self.arrival_date
-  #   arrival_date.strftime("%b %e, %Y")
-  # end
+  def user
+  user_id = self.user_id
+  the_user = Delivery.where(:user_id => user.id)
+  end
+
 end
