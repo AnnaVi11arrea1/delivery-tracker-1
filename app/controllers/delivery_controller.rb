@@ -21,7 +21,11 @@
     delivery.created_at = Time.now
     delivery.updated_at = Time.now
     delivery.save
-    redirect_to("/deliveries", { notice: "Delivery created successfully"})
+    if save.success?
+    redirect_to("/deliveries", { notice: "Added to list"})
+    else
+      redirect_to("/deliveries", { alert: "Failed to add to list"})
+    end
   end
 
   def delete

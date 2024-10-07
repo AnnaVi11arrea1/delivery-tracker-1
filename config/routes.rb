@@ -8,7 +8,7 @@ get("/users/:id/edit", { :controller => "users", :action => "edit" })
 
 
 get("/deliveries", { :controller => "delivery", :action => "index"})
-post("/add_delivery/:id", { :controller => "delivery", :action => "new"})
+post("/add_delivery", { :controller => "delivery", :action => "new"})
 get("/delete_delivery/:id", { :controller => "delivery", :action => "delete"})
 
 
