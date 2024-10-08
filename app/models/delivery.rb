@@ -18,9 +18,4 @@ class Delivery < ApplicationRecord
   validates :details, presence: true
   validates :supposed_to_arrive_on, presence: true
 
-  def user
-  user_id = self.user_id
-  the_user = Delivery.where(:user_id => user.id)
-  end
-
 end

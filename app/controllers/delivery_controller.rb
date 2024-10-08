@@ -14,17 +14,18 @@
 
   def new
     delivery = Delivery.new
-    delivery.user_id = params.fetch("id")
     delivery.supposed_to_arrive_on = params.fetch("supposed_to_arrive_on")
     delivery.description = params.fetch("description")
     delivery.details = params.fetch("details")
     delivery.created_at = Time.now
     delivery.updated_at = Time.now
-    delivery.save
-    if save.success?
-    redirect_to("/deliveries", { notice: "Added to list"})
+    delivery.user_id = current_user.id
+
+    if delivery.valid?
+      delivery.save
+      redirect_to("/deliveries", { :notice => "Added to list." })
     else
-      redirect_to("/deliveries", { alert: "Failed to add to list"})
+      redirect_to("/deliveries", { :alert => "Failed to add to list" })
     end
   end
 
