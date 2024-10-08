@@ -25,7 +25,6 @@
 .navbar {
   background-image: linear-gradient(to right, #ff416c, #ff4b2b);
   padding: 1em;
-  border-radius: 5px;
   color: white;
   display: flex;
   align-items: center;
@@ -43,19 +42,24 @@
   
   }
 .waiting_on {
+  display: flex;
   background-image: linear-gradient(to bottom, pink, white);
   padding: 1em;
   border-radius: 5px;
-  width: 33%;
+  width: 35%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .received {
+  display: flex;
   background-image: linear-gradient(to bottom, lightgreen, transparent);
   padding: 1em;
   border-radius: 5px;
-  width: 33%;
+  width: 30%;
+  flex-direction: column;
+  align-items: center;
 }
 
 .top, .expecting {
@@ -80,10 +84,14 @@ hr {
 .expecting {
   background-image:linear-gradient(to right, #ff416c, #ff4b2b);
   padding: 1em;
-  width: 30%;
+  width: 33%;
   border-radius: 5px;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.received, .waiting_on, .expecting{
+  box-shadow: inset 0 0 10px #000000;
 }
 
 input, textarea {
@@ -95,16 +103,15 @@ input, textarea {
 }
 
 button {
-  padding: 0.5em;
+  padding: 0.2em;
   margin: 1em;
   border-radius: 5px;
   border: 1px solid rgb(146, 146, 146);
   background-color: #ffffff;
   color: rgb(83, 50, 50);
-  font-size: 1.2em;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .navbar {
     flex-direction: column;
     align-items: center;
@@ -115,11 +122,18 @@ button {
   .top {
     flex-direction: column;
   }
-  .expecting, .recieved, .waiting_on, .status {
+  .expecting, .received, .waiting_on, .status {
+    display:flex;
     flex-direction: column;
     align-items: center;
+    justify-items: center;
     width: 100%;
   }
+
+  .expecting{
+    order: -1;
+  }
+
   input, textarea {
     width: 80%;
   }

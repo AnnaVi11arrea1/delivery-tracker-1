@@ -4,6 +4,7 @@
 </div>
 <hr>
 <div class="status">
+
     <div class="waiting_on">
       <h2>Waiting on</h2> 
       <table border="1">
@@ -12,15 +13,16 @@
       <th>Details</th>
       <th>Mark as received</th> 
     <% @pending.each do |delivery| %>
-    <tr>
-      <td><%= delivery.description %></td>
+      <tr>
+        <td><%= delivery.description %></td>
         <td>Supposed to arrive on<%= delivery.supposed_to_arrive_on %></td>
         <td><%= delivery.details %></td>
         <td><form action="/modify_delivery/<%= delivery.id %>">
             <input value="true" type="hidden" name="query_arrived">
             <button type="submit">Mark as received</button>
-          </form>
-          </td>
+            </form>
+        </td>
+      </tr>
     <% end %>
     </table>
   </div>
@@ -48,17 +50,20 @@
   </div>
 
   <div class="received">
-    <table border="1">
     <h2>Received</h2>
+    <table border="1">
+    <tr>
     <th>Name</th>
     <th>Updated</th>
     <th>Delete</th>
+    </tr>
     <tr>
       <% @received.each do |done| %>
-          <td><%= done.description %></td>
-          <td>Updated <%= time_ago_in_words(Time.now) %> ago</td>
-          <td><a href="/delete_delivery/<%= done.id %>">Delete</a></td>
-            </tr>
+        <td><%= done.description %></td>
+        <td>Updated <%= time_ago_in_words(Time.now) %> ago</td>
+        <td><a href="/delete_delivery/<%= done.id %>">Delete</a></td>
+    </tr>
       <% end %>
+    </table>
   </div>
 </div>
