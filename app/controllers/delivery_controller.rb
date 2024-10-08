@@ -1,6 +1,6 @@
  class DeliveryController < ApplicationController
   def index
-    @matching_deliveries = Delivery.where({:user_id => current_user.id})
+    @matching_deliveries = Delivery.where({:user_id => current_user})
     @pending = @matching_deliveries.where({:arrived => false })
     @received = @matching_deliveries.where({:arrived => true})
     render(:templates => 'delivery/index')
