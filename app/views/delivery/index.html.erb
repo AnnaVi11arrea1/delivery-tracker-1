@@ -3,7 +3,8 @@
 <hr>
 <h2>Expecting a package?</h2>
 
-<form action="/add_delivery" method="post">
+
+<form action="/insert_delivery" method="post">
   <div>
     <label for="description">Description</label>
     <input type="text" name="description" id="description">
@@ -16,6 +17,9 @@
   <label for="details">Details</label>
   <textarea name="details" id="details"></textarea>
   </div>
+  <div>
+    <input value="false" type="hidden" name="query_arrived">
+    <div>
   <div>
     <button type="submit">Log delivery</button>
   </div>
@@ -31,8 +35,14 @@
       <div><%= delivery.description %></div>
       <div>Supposed to arrive on<%= delivery.supposed_to_arrive_on %></div>
       <div><%= delivery.details %></div>
-      <button type="submit">Mark as received</button>
+      
+      <form action="/modify_delivery/<%= delivery.id %>">
+          <input value="true" type="hidden" name="query_arrived">
+          <button type="submit">Mark as received</button>
+        </form>
     </li>
+
+  
     <br>
   <% end %>
   </ul>
@@ -43,7 +53,7 @@
 <div class="received">
   <h2>Received</h2>
   <ul>
-    <% @recieved.each do |done| %>
+    <% @received.each do |done| %>
       <li>
         <div><%= done.description %></div>
      
