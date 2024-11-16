@@ -1,3 +1,5 @@
-# delivery-tracker-1
+Run bin/server or bin/dev to view in server.
 
-Target: https://delivery-tracker-1.matchthetarget.com
+Add expected packages to a list, update status of packages.
+
+

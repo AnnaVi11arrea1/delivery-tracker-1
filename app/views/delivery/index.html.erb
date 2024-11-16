@@ -1,0 +1,69 @@
+<div class="top">
+  <h1>Delivery Tracker</h1>
+  <p>Know if something gets lost in the mail.</p>
+</div>
+<hr>
+<div class="status">
+
+    <div class="waiting_on">
+      <h2>Waiting on</h2> 
+      <table border="1">
+      <th>Name</th>
+      <th>Arrival Date</th>
+      <th>Details</th>
+      <th>Mark as received</th> 
+    <% @pending.each do |delivery| %>
+      <tr>
+        <td><%= delivery.description %></td>
+        <td>Supposed to arrive on<%= delivery.supposed_to_arrive_on %></td>
+        <td><%= delivery.details %></td>
+        <td><form action="/modify_delivery/<%= delivery.id %>">
+            <input value="true" type="hidden" name="query_arrived">
+            <button type="submit">Mark as received</button>
+            </form>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+
+  <div class="expecting">
+    <h2>Expecting a package?</h2>
+    <form action="/insert_delivery" method="post">
+      <div>
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description">
+      </div>
+      <div>
+        <label for="supposed_to_arrive_on">Supposed to arrive on</label>
+        <input type="date" name="supposed_to_arrive_on" id="supposed_to_arrive_on">
+      </div>
+      <div>
+        <label for="details">Details</label>
+        <textarea name="details" id="details"></textarea>
+      </div>
+        <input value="false" type="hidden" name="query_arrived">
+      <div>
+        <button type="submit">Log delivery</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="received">
+    <h2>Received</h2>
+    <table border="1">
+    <tr>
+    <th>Name</th>
+    <th>Updated</th>
+    <th>Delete</th>
+    </tr>
+    <tr>
+      <% @received.each do |done| %>
+        <td><%= done.description %></td>
+        <td>Updated <%= time_ago_in_words(Time.now) %> ago</td>
+        <td><a href="/delete_delivery/<%= done.id %>">Delete</a></td>
+    </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
